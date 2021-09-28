@@ -34,27 +34,27 @@ RTA.clients.config.generalsettings = multiline(function(){/*
 				</tr>
 				<tr>
 					<td><span class="title">Host</span></td>
-					<td><input type="text" name="host" /><br />
+					<td><input type="text" name="host" /><br /><br />
 						<span class="tip">The ip/hostname to connect to</span></td>
 				</tr>
 				<tr>
 					<td><span class="title">Port</span></td>
-					<td><input type="text" name="port" /><br />
+					<td><input type="text" name="port" /><br /><br />
 						<span class="tip">The remote port</span></td>
 				</tr>
 				<tr>
 					<td><span class="title">SSL</span></td>
-					<td><input type="checkbox" name="hostsecure" /><br />
+					<td><input type="checkbox" name="hostsecure" /><br /><br />
 						<span class="tip">Check if the WebUI runs on SSL (http<strong>s</strong>://). Set the Port to 443!</span></td>
 				</tr>
 				<tr>
 					<td><span class="title">Username</span></td>
-					<td><input type="text" name="login" /><br />
+					<td><input type="text" name="login" /><br /><br />
 						<span class="tip">Login name of the WebUI</span></td>
 				</tr>
 				<tr>
 					<td><span class="title">Password</span></td>
-					<td><input type="password" name="password" /><br />
+					<td><input type="password" name="password" /><br /><br />
 						<span class="tip">Password of the WebUI</span></td>
 				</tr>
 			</tbody>

@@ -1,6 +1,5 @@
 body {
     font-family: 'Roboto', sans-serif !important;
-    background: linear-gradient(-1deg,#0d1115,#0d1115 94%,#000);
     background-color: #212529!important;
     color: #ffffff;
     padding: 0;
@@ -18,6 +17,7 @@ body {
 }
 
 .configcontainer {
+    background: linear-gradient(-1deg,#0d1115,#0d1115 94%,#000);
     min-height: 100%;
     height: auto !important;
     margin-bottom: -60px;
@@ -154,7 +154,7 @@ input, select, button {
     background-color: #2b3034 !important;
     position: static; 
     margin: 0 4px 0 0; 
-    padding: 0 0.5em 0 0; 
+    padding: 0 1em; 
     border-radius: 0px; 
 }
 
