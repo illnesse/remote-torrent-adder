@@ -115,7 +115,7 @@ RTA.displayResponse = function(title, message, error=false) {
 	if(localStorage.getItem("showpopups") == "true") {
 		var opts = { 
 					type: "basic", 
-					iconUrl: (error === true) ? "icons/BitTorrent128-red.png" : "icons/BitTorrent128.png", 
+					iconUrl: (error === true) ? "icons/logo128-red.png" : "icons/logo128.png", 
 					title: title,
 					priority: 0,
 					message: message
