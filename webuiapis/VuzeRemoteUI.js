@@ -1,7 +1,7 @@
 RTA.clients.vuzeRemoteAdder = function(server, data) {
 	if(data.substring(0,7) == "magnet:") target = "rpc";
 	else target = "upload?paused=false";
-	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + "/transmission/" + target;
+	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + "/transmission/" + target;
 
 	// poke it a little so it gives us a sessionid cookie
 	fetch(apiUrl)

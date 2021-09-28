@@ -1,5 +1,5 @@
 RTA.clients.tixatiAdder = function(server, data, torrentname) {
-	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + "/transfers/action";
+	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + "/transfers/action";
 	const filename = ((torrentname.length && torrentname.length > 1) ? torrentname : (new Date).getTime());
 	const message = new FormData();
 	message.append("noautostart", "0");

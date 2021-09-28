@@ -1,5 +1,5 @@
 RTA.clients.transmissionAdder = function(server, torrentdata) {
-	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + "/transmission/rpc";
+	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + "/transmission/rpc";
 
 	fetch(apiUrl, {
 		method: 'POST',

@@ -2,14 +2,14 @@ RTA.clients.uTorrentAdder = function(server, torrentdata) {
 	var relpath = (server.utorrentrelativepath == undefined || server.utorrentrelativepath == "") ? "/gui/" : server.utorrentrelativepath;
 	var scheme = server.hostsecure ? "https://" : "http://";
 
-	var tokenUrl = scheme + server.host + ":" + server.port + relpath + "token.html";
+	var tokenUrl = scheme + server.host + addPort(server) + relpath + "token.html";
 	fetch(tokenUrl)
 	.then(RTA.handleFetchError)
 	.then(response => response.text())
 	.then(response => {
 		if(/<div.*?>(.*?)<\/div>/.exec(response)) {
 			const token = /<div.*?>(.*?)<\/div>/.exec(response)[1];
-			var postUrl = scheme + server.host + ":" + server.port + relpath + "?token=" + token;
+			var postUrl = scheme + server.host + addPort(server) + relpath + "?token=" + token;
 			var message;
 			var fetchOpts = {
 				headers: {  }

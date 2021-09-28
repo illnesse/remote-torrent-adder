@@ -30,7 +30,7 @@ RTA.clients.hadoukenAdder = async function(server, torrentdata, name) {
 		});
 	}
 
-	fetch("http://" + server.host + ":" + server.port + "/api", {
+	fetch("http://" + server.host + addPort(server) + "/api", {
 		method: 'POST',
 		body: message
 	}).then(RTA.handleFetchError)

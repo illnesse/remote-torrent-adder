@@ -27,7 +27,7 @@ RTA.clients.rtorrentXmlRpcAdder = async function(server, torrentdata) {
 	
 	const relPath = server.rtorrentxmlrpcrelativepath || "";
 	const slash = relPath.startsWith("/") ? "" : "/";
-	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + slash + relPath;
+	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + slash + relPath;
 
 	fetch(apiUrl, {
 		method: 'POST',

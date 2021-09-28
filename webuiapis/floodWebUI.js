@@ -2,7 +2,7 @@ RTA.clients.floodAdder = function(server, torrentdata) {
 	var dir = server.flooddirectory;
 	var paused = server.floodaddpaused;
 
-	var apiUrl = (server.hostsecure ? "https://" : "http://") + server.host + ":" + server.port;
+	var apiUrl = (server.hostsecure ? "https://" : "http://") + server.host + addPort(server);
 	
 	fetch(apiUrl + "/auth/authenticate", {
 		method: 'POST',

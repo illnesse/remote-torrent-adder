@@ -5,7 +5,7 @@ RTA.clients.tTorrentAdder = function(server, data, torrentname) {
 	} else {
 		target = "downloadTorrent";
 	}
-	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + "/cmd/" + target;
+	const apiUrl = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + "/cmd/" + target;
 
 	var message;
 	if(data.substring(0,7) == "magnet:") {

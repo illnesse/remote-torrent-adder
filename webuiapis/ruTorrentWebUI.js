@@ -61,7 +61,7 @@ autoDirectory:
 	url += (server.hostsecure ? "s" : "");
 	url += "://";
 	url += server.host;
-	url += ":" + server.port;
+	url += addPort(server);
 	if(server.ruTorrentrelativepath == undefined || server.ruTorrentrelativepath[0] != "/")
 		url += "/"; // first slash
 	if(server.ruTorrentrelativepath != undefined)

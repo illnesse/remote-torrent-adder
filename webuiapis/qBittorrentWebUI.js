@@ -6,7 +6,7 @@ RTA.clients.qBittorrentAdder = function(server, data, torrentname, label, dir) {
 		target = "upload";
 	
 	
-	var rootUrl = (server.hostsecure ? "https" : "http") + "://" + server.host + ":" + server.port;
+	var rootUrl = (server.hostsecure ? "https" : "http") + "://" + server.host + addPort(server);
 
 	// execute login request
 	fetch(rootUrl + "/login", {

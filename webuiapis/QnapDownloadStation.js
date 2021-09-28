@@ -18,7 +18,7 @@ RTA.clients.qnapDownloadStationAdder = function(server, torrentdata, torrentname
 	var scheme = server.hostsecure ? "https://" : "http://";
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", scheme + server.host + ":" + server.port + "/downloadstation/V4/Misc/Login", false);
+	xhr.open("POST", scheme + server.host + addPort(server) + "/downloadstation/V4/Misc/Login", false);
 	var formData = new FormData();
 	formData.append("user", server.login);
 	formData.append("pass", btoa(server.password));
@@ -33,7 +33,7 @@ RTA.clients.qnapDownloadStationAdder = function(server, torrentdata, torrentname
 
 	if(torrentdata.substring(0,7) == "magnet:") {
 		var mxhr = new XMLHttpRequest();
-		mxhr.open("POST", scheme + server.host + ":" + server.port + "/downloadstation/V4/Task/AddUrl", false);
+		mxhr.open("POST", scheme + server.host + addPort(server) + "/downloadstation/V4/Task/AddUrl", false);
 		var formData = new FormData();
 		formData.append("url", torrentdata);
 		formData.append("temp", server.qnaptemp);
@@ -43,7 +43,7 @@ RTA.clients.qnapDownloadStationAdder = function(server, torrentdata, torrentname
 		mxhr.send(formData);
 	} else {
 		var txhr = new XMLHttpRequest();
-		txhr.open("POST", scheme + server.host + ":" + server.port + "/downloadstation/V4/Task/AddTorrent", false);
+		txhr.open("POST", scheme + server.host + addPort(server) + "/downloadstation/V4/Task/AddTorrent", false);
 		txhr.onreadystatechange = handleResponse;
 		// mostly stolen from https://github.com/igstan/ajax-file-upload/blob/master/complex/uploader.js
 		var boundary = "AJAX-----------------------" + (new Date).getTime();

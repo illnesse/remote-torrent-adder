@@ -5,7 +5,7 @@ RTA.clients.vuzeSwingAdder = function(server, data) {
 	}
 	
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "http://" + server.host + ":" + server.port + "/upload.cgi", true);
+	xhr.open("POST", "http://" + server.host + addPort(server) + "/upload.cgi", true);
 	xhr.onreadystatechange = function(data) {
 		if(xhr.readyState == 4 && xhr.status == 200) {
 			if(/.*Upload OK.*/.exec(xhr.responseText)) {

@@ -108,7 +108,7 @@ function registerReferrerHeaderListeners() {
 	var servers = JSON.parse(localStorage.getItem("servers"));
 	for(var i in servers) {
 		var server = servers[i];
-		const url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + "/";
+		const url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server); + "/";
 		
 		const listener = (function(arg) {
 			const myUrl = arg;
@@ -144,7 +144,7 @@ function registerReferrerHeaderListeners() {
 			};
 		})(url);
 		
-		if(server.host && server.port) {
+		if(server.host) {
 			chrome.webRequest.onBeforeSendHeaders.addListener(listener, {urls: [ url + "*" ]}, ["blocking", "requestHeaders", "extraHeaders"]);
 		}
 		
@@ -199,6 +199,15 @@ const headersListener = function(details) {
 chrome.webRequest.onBeforeSendHeaders.addListener(headersListener, {urls: [ "<all_urls>" ]}, ["blocking", "requestHeaders", "extraHeaders"]);
 
 
+function addPort(server) {
+	var port = ":" + server.port;
+	if (server.port.replace(/\s+/g, "") === "")
+	{
+		port = "";
+	}
+	return port;
+}
+
 ////////////////////////////////////////////////////
 // SUPPLY DIGEST AUTHENTICATION TO WEB UIS WE MANAGE
 ////////////////////////////////////////////////////
@@ -214,7 +223,7 @@ function registerAuthenticationListeners() {
 	var servers = JSON.parse(localStorage.getItem("servers"));
 	for(var i in servers) {
 		var server = servers[i];
-		const url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + "/";
+		var url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + "/";
 		
 		const listener = (function(user, pass, url) {
 			return function(details) {
@@ -234,7 +243,7 @@ function registerAuthenticationListeners() {
 			};
 		})(server.login, server.password, url);
 		
-		if(server.host && server.port) {
+		if(server.host) {
 			chrome.webRequest.onAuthRequired.addListener(listener, { urls: [ url + "*" ], tabId: -1 }, ["blocking"]);
 		}
 		
@@ -253,7 +262,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 	if(servers.length > 0) {
 		const server = servers[0];
 		const relativePath = server.ruTorrentrelativepath || server.utorrentrelativepath || server.delugerelativepath || server.rtorrentxmlrpcrelativepath || "/";
-		const url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + relativePath;
+		const url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + addPort(server) + relativePath;
 		chrome.tabs.create({ url: url });
 	}
 	else

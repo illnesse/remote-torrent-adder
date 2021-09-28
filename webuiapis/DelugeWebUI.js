@@ -3,7 +3,7 @@ RTA.clients.delugeAdder = function(server, torrentdata, filename) {
 	
 	const relPath = (server.delugerelativepath == undefined) ? "" : server.delugerelativepath;
 	const scheme = server.hostsecure ? "https" : "http";
-	const apiUrl = scheme + "://" + server.host + ":" + server.port + relPath + "/json";
+	const apiUrl = scheme + "://" + server.host + addPort(server) + relPath + "/json";
 
 	fetch(apiUrl, {
 		method: 'POST',

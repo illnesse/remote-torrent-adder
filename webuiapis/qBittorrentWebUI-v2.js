@@ -1,5 +1,5 @@
 RTA.clients.qBittorrentV2Adder = function(server, data, torrentname, label, dir) {
-	var rootUrl = (server.hostsecure ? "https" : "http") + "://" + server.host + ":" + server.port;
+	var rootUrl = (server.hostsecure ? "https" : "http") + "://" + server.host + addPort(server);
 
 	// execute login request
 	fetch(rootUrl + "/api/v2/auth/login", {

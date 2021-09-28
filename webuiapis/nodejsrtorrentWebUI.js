@@ -13,7 +13,7 @@ RTA.clients.nodeJSrTorrentAdder = function(server, torrentdata) {
 
 	// run the login first
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", scheme + server.host + ":" + server.port + "/login", false);
+	xhr.open("POST", scheme + server.host + addPort(server) + "/login", false);
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	var loginMsg = JSON.stringify({"email": server.login, "password": server.password});
 	xhr.send(loginMsg);
@@ -28,7 +28,7 @@ RTA.clients.nodeJSrTorrentAdder = function(server, torrentdata) {
 	
 	if(torrentdata.substring(0,7) == "magnet:") {
 		var mxhr = new XMLHttpRequest();
-		mxhr.open("POST", scheme + server.host + ":" + server.port + "/torrents/load", true);
+		mxhr.open("POST", scheme + server.host + addPort(server) + "/torrents/load", true);
 		mxhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		mxhr.setRequestHeader("Authorization", "Bearer " + loginJson._id + ":" + loginJson.expires + ":" + loginJson.token);
 		mxhr.onreadystatechange = njs_handleResponse;
@@ -36,7 +36,7 @@ RTA.clients.nodeJSrTorrentAdder = function(server, torrentdata) {
 		mxhr.send(message);
 	} else {
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", scheme + server.host + ":" + server.port + "/torrents/load", true);
+		xhr.open("POST", scheme + server.host + addPort(server) + "/torrents/load", true);
 		xhr.setRequestHeader("Authorization", "Bearer " + loginJson._id + ":" + loginJson.expires + ":" + loginJson.token);
 		xhr.onreadystatechange = njs_handleResponse;
 		// mostly stolen from https://github.com/igstan/ajax-file-upload/blob/master/complex/uploader.js

@@ -2,7 +2,7 @@ RTA.clients.floodJesecAdder = function(server, torrentdata) {
 	var dir = server.floodjesecdirectory;
 	var paused = server.floodjesecaddpaused;
 
-	var apiUrl = (server.hostsecure ? "https://" : "http://") + server.host + ":" + server.port;
+	var apiUrl = (server.hostsecure ? "https://" : "http://") + server.host + addPort(server);
 	
 	fetch(apiUrl + "/api/auth/authenticate", {
 		method: 'POST',
