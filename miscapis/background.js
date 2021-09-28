@@ -256,4 +256,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 		const url = "http" + (server.hostsecure ? "s" : "") + "://" + server.host + ":" + server.port + relativePath;
 		chrome.tabs.create({ url: url });
 	}
+	else
+	{
+		alert("Extension config seems to be empty, let's go to the options page and set up access to torrent clients on your seedbox!")
+		chrome.tabs.create({ url: "options.html" });
+	}
 });
