@@ -2,7 +2,7 @@
 	"name": "Seedit4.me Torrent Adder",
 	"short_name": "S4ME",
 	"icons": {"16":"icons/logo16.png", "48":"icons/logo48.png", "128":"icons/logo128.png"},
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"manifest_version": 2,
 	"description": "Add torrents to your Seedit4.me seedbox",
 	"permissions": ["*://*/*","contextMenus","notifications","tabs","webRequest","webRequestBlocking"],

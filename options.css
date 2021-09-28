@@ -134,7 +134,6 @@ input, select, button {
 } 
 
 #configtabs .ui-tabs-panel { 
-    padding-top: 2rem;
     background-color: #212529;
     box-shadow: 0 0 2rem 0 rgba(0,0,0,.55)!important;
     border: none; 
@@ -177,10 +176,6 @@ input, select, button {
 
 }
 
-.ui-tabs{
-    padding: 2rem;
-}
-
 .ui-dialog {
     box-shadow: 0 0 2rem 0 rgba(0,0,0,.55)!important;
 }
@@ -221,6 +216,10 @@ input, select, button {
 
     color: #fff;
     font-weight: bold;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: 4em 1.4em 2em 1.4em;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
