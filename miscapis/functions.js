@@ -56,15 +56,18 @@ RTA.dispatchTorrent = function(server, data, name, label, dir) {
 			RTA.clients.qBittorrentV2Adder(server, data, name, label, dir); break;
 		case "rTorrent XML-RPC":
 			RTA.clients.rtorrentXmlRpcAdder(server, data); break;
+		case "Elementum WebUI":
+			RTA.clients.elementumAdder(server, data, name); break;
 	}
 }
 
 
-RTA.getTorrent = function(server, url, label, dir) {
+RTA.getTorrent = function(server, url, label, dir, referer) {
 	if(url.substring(0,7) == "magnet:" || server.rutorrentalwaysurl) {
 		RTA.dispatchTorrent(server, url, "", label, dir);
 	} else {
 		RTA.getTorrentLink = url;
+		RTA.getTorrentLinkReferer = referer;
 		
 		fetch(url)
 		.then(RTA.handleFetchError)
@@ -182,7 +185,7 @@ RTA.genericOnClick = function(info, tab) {
 
 	if(serverId === -1) { // send to all servers
 		for(var i in servers) {
-			RTA.getTorrent(servers[i], info.linkUrl);
+			RTA.getTorrent(servers[i], info.linkUrl, null, null, tab.url);
 		}
 	} else { // only one server specified
 		var server = JSON.parse(localStorage.getItem("servers"))[serverId];
@@ -197,7 +200,7 @@ RTA.genericOnClick = function(info, tab) {
 			chrome.tabs.sendRequest(tab.id, {"action": "showLabelDirChooser", "url": info.linkUrl, "settings": localStorage, "server": server});
 		} 
 		else {
-			RTA.getTorrent(server, info.linkUrl);
+			RTA.getTorrent(server, info.linkUrl, null, null, tab.url);
 		}
 	}
 }
